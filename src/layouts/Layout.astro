@@ -1,3 +1,8 @@
+---
+import '../styles/global.css';
+import ThemeButton from '../components/ThemeButton.astro';
+import NavBar from '../components/NavBar.astro';
+---
 <!doctype html>
 <html lang="en">
 	<head>
@@ -5,10 +10,30 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet" />
+        <style is:global>
+            .font-schoolbell {
+                font-family: 'Schoolbell', cursive !important;
+            }
+            /* If "MoSchoolbell" is meant as a variation, fallback to Schoolbell or cursive */
+            .font-moschoolbell {
+                font-family: 'Schoolbell', cursive !important;
+                font-style: italic;
+                letter-spacing: 0.03em;
+            }
+        </style>
 		<title>Astro Basics</title>
 	</head>
-	<body>
-		<slot />
+	<body class="font-mono bg-white dark:bg-gray-900
+	text-gray-900 dark:text-white
+	">
+
+		<div style="margin-right: calc(-1 * (100vw - 100%));">
+            <div class="container mx-auto pb-8 px-3 md:px-8 min-h-screen w-screen flex flex-col">
+				<NavBar />
+				<slot />
+            </div>
+        </div>
 	</body>
 </html>
 

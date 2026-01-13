@@ -1,0 +1,16 @@
+---
+import ThemeButton from './ThemeButton.astro';
+---
+<nav class="bg-transparent">
+    <div class="flex justify-between items-center">
+        <div class="flex space-x-4 ml-12 mt-6">
+            <a href="/" class="text-gray-900 dark:text-white hover:underline">Home</a>
+            <a href="/mybio" class="text-gray-900 dark:text-white hover:underline">MyBio</a>
+            <a href="/publications" class="text-gray-900 dark:text-white hover:underline">Publications</a>
+            <a href="/contacts" class="text-gray-900 dark:text-white hover:underline">Contacts</a>
+        </div>
+        <div class="flex items-center mr-12 mt-6">
+            <ThemeButton />
+        </div>
+    </div>
+</nav>

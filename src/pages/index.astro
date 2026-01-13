@@ -1,11 +1,84 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
 ---
 
 <Layout>
-	<Welcome />
+
+	<div class="flex flex-1 items-center py-0">
+        <div class="w-full">
+			<main>
+				<div class="block md:flex justify-center items-center">
+					<div class="text-center md:text-left">
+						<span class="font-schoolbell font-bold text-4xl">I'm a </span><br/>
+						<span class="font-schoolbell text-2xl">PhD Student</span><br/>
+						<!-- <span>Information Retrieval, </span> <br/> -->
+						<span class="font-schoolbell text-4xl">but</span><br/>
+						<span class="font-moschoolbell">sometimes</span> <span class="font-schoolbell">
+							want to be a <span id='text_adjective'>peaceful</span> <span id='text_noun'>avocado 🥑</span>.
+						</span>
+					</div>
+					<div id="image-container" class="w-fit mx-auto mt-5 md:m-0 md:ml-10">
+						<img id="image-home" src="/images/peanut_1.jpeg" class="w-40 h-40 rounded-xl">
+						<p id='image-desc' class="w-full font-schoolbell text-center text-sm mt-2">This is Peanut</p>
+					</div>
+				</div>
+        </div>
+    </div>
+	  
 </Layout>
+
+<script>
+  const image_container = document.getElementById('image-container')!;
+  const image = document.getElementById('image-home')!;
+  const image_desc = document.getElementById('image-desc')!;
+
+  const images = [
+    [ '/images/peanut_1.jpeg', 'This is Peanut' ],
+    [ '/images/pudding_1.jpg', 'This is Pudding' ],
+    [ '/images/me.jpg', 'This is Avocado' ],
+  ];
+
+  function setImage(idx: number) {
+    const [src, desc] = images[idx];
+    image.src = src;
+    image.alt = desc;
+	image_desc.textContent = desc;
+  }
+
+
+  const text_adjective = document.getElementById('text_adjective')!;
+  const text_noun = document.getElementById('text_noun')!;
+  const adjectives = [ 'peaceful', 'happy', 'sad', 'angry', 'hungry', 'thirsty', 'sleepy', 'hungry', 'patient', 'sleepy', 'calm', 'lazy',  ];
+  const nouns = [ 'avocado 🥑', 'banana 🍌', 'apple 🍎', 'orange 🍊', 'pear 🍐', 'pineapple 🍍', 'strawberry 🍓', 'cherry 🍒', 'watermelon 🍉', 'melon 🍈', 'potato 🥔' ];
+  
+  function setAdjective() {
+		const random_idx = Math.floor(Math.random() * adjectives.length);
+		text_adjective.textContent = adjectives[random_idx];
+  }
+  function setNoun() {
+		const random_idx = Math.floor(Math.random() * nouns.length);
+		text_noun.textContent = nouns[random_idx];
+  }
+
+
+  window.onload = function() {
+	let curr_idx = 0;
+    setImage(curr_idx);
+
+	image_container.addEventListener('click', () => {
+		const random_idx = Math.floor(Math.random() * images.length);
+		if (random_idx == curr_idx) {
+			curr_idx = (random_idx + 1) % images.length;
+		} else {
+			curr_idx = random_idx;
+		}
+		setImage(curr_idx);
+  	});
+
+	setAdjective();
+	setNoun();
+  }
+</script>
