@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 
+function randint(min: number, max: number): number {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 ---
 
 <Layout>
@@ -27,6 +29,10 @@ import Layout from '../layouts/Layout.astro';
 				</div>
         </div>
     </div>
+
+	<div class="absolute top-0 left-0 w-screen h-screen z-[-1]">
+		<img src="/images/star.png" style={`top: ${randint(10,30)}vh; left: ${randint(10,30)}vw;`} class="w-15 absolute">
+	</div>
 	  
 </Layout>
 

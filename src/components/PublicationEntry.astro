@@ -1,0 +1,46 @@
+---
+interface Props {
+    index: number;
+    title: string;
+    authors: string;
+    venue: string;
+    link: string;
+}
+
+const { index, title, authors, venue, link } = Astro.props;
+---
+
+<div class="relative group">
+    <div class="flex flex-col gap-3">
+      
+        <div class="flex items-start gap-4">
+            <span class="font-schoolbell text-4xl font-bold text-gray-700 dark:text-gray-400 mt-1">
+                {String(index + 1).padStart(2, '0')}
+            </span>
+            <div class="flex-1">
+                <h2 class="font-schoolbell text-3xl font-bold leading-tight hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    {title}
+                </h2>
+                <div class="flex justify-between items-center w-full">
+                    <div>
+                        <p class="font-schoolbell text-xl text-gray-600 dark:text-gray-100 mt-2 italic">
+                            {authors}
+                        </p>
+                    </div>
+                    <div>
+                        <span class="font-schoolbell text-nowrap text-lg bg-gray-400 dark:bg-gray-400/70 px-4 py-1 rounded-lg border-2 border-yellow-200 dark:border-yellow-200 -rotate-1">
+                            {venue}
+                        </span>
+                    </div>
+                </div>
+                <div class="mt-4 flex flex-wrap items-center gap-4">
+                    <a href={link} class="font-schoolbell text-xl text-blue-500 dark:text-blue-300 hover:underline decoration-wavy underline-offset-4">
+                        → Read Paper
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-16 border-t-2 border-dashed border-gray-200 dark:border-gray-800 w-2/3 mx-auto opacity-50"></div>
+</div>

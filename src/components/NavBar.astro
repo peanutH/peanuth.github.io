@@ -2,15 +2,45 @@
 import ThemeButton from './ThemeButton.astro';
 ---
 <nav class="bg-transparent">
-    <div class="flex justify-between items-center">
-        <div class="flex space-x-4 ml-12 mt-6">
-            <a href="/" class="text-gray-900 dark:text-white hover:underline">Home</a>
-            <a href="/mybio" class="text-gray-900 dark:text-white hover:underline">MyBio</a>
-            <a href="/publications" class="text-gray-900 dark:text-white hover:underline">Publications</a>
-            <a href="/contacts" class="text-gray-900 dark:text-white hover:underline">Contacts</a>
-        </div>
-        <div class="flex items-center mr-12 mt-6">
-            <ThemeButton />
-        </div>
+  <div class="flex justify-between items-center">
+    <!-- Hamburger Button, hidden on md and up -->
+    <button id="navbar-toggle" class="block md:hidden ml-4 mt-6 focus:outline-none text-gray-900 dark:text-white" aria-label="Toggle menu">
+      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+      </svg>
+    </button>
+    <!-- Nav links: visible on md+, hidden on mobile -->
+    <div class="hidden md:flex space-x-4 mt-6">
+      <a href="/" class="text-gray-900 dark:text-white hover:underline">Home</a>
+      <a href="/mybio" class="text-gray-900 dark:text-white hover:underline">MyBio</a>
+      <a href="/publications" class="text-gray-900 dark:text-white hover:underline">Publications</a>
+      <a href="/contacts" class="text-gray-900 dark:text-white hover:underline">Contacts</a>
     </div>
+    <!-- Theme Button always visible, adjust margin for mobile -->
+    <div class="flex items-center mt-6">
+      <ThemeButton />
+    </div>
+  </div>
+  <!-- Dropdown menu for mobile, hidden by default -->
+  <div id="navbar-dropdown" class="md:hidden hidden mt-2 px-6 pb-4">
+    <a href="/" class="block text-gray-900 dark:text-white hover:underline py-1">Home</a>
+    <a href="/mybio" class="block text-gray-900 dark:text-white hover:underline py-1">MyBio</a>
+    <a href="/publications" class="block text-gray-900 dark:text-white hover:underline py-1">Publications</a>
+    <a href="/contacts" class="block text-gray-900 dark:text-white hover:underline py-1">Contacts</a>
+  </div>
+  <script is:inline>
+    const toggle = document.getElementById('navbar-toggle');
+    const dropdown = document.getElementById('navbar-dropdown');
+    if (toggle && dropdown) {
+      toggle.addEventListener('click', () => {
+        dropdown.classList.toggle('hidden');
+      });
+    }
+    // Optional: Hide dropdown when resizing to md and above
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        dropdown?.classList.add('hidden');
+      }
+    });
+  </script>
 </nav>

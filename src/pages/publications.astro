@@ -1,6 +1,117 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PublicationEntry from '../components/PublicationEntry.astro';
+
+function randint(min: number, max: number): number {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const doodles = [
+    { src: '/images/star.png', top: '10%', left: '5%', size: 'w-12' },
+    { src: '/images/sun.png', top: '20%', left: '85%', size: 'w-16' },
+    { src: '/images/star.png', top: '60%', left: '10%', size: 'w-10' },
+    { src: '/images/star.png', top: '80%', left: '80%', size: 'w-14' },
+    { src: '/images/sun.png', top: '45%', left: '90%', size: 'w-12' },
+];
+
+
+const publications = [
+    {
+        "title": "Characterizing Personality from Eye-Tracking: The Role of Gaze and Its Absence in Interactive Search Environments",
+        "authors": "Jiaman He, Marta Micheli, Damiano Spina, Dana McKay, Johanne R. Trippas, Noriko Kando",
+        "venue": "CHIIR 2026",
+        "link": "https://arxiv.org/abs/2601.08287",
+    },
+    {
+        "title": "AgentSense: Virtual Sensor Data Generation Using LLM Agent in Simulated Home Environments",
+        "authors": "Zikang Leng, Megha Thukral, Yaqi Liu, Hrudhai Rajasekhar, Shruthi K Hiremath, Jiaman He, Thomas Plötz",
+        "venue": "AAAI 2026",
+        "link": "https://arxiv.org/abs/2506.11773",
+    },
+    {
+        "title": "Characterising Topic Familiarity and Query Specificity Using Eye-Tracking Data",
+        "authors": "Jiaman He, Zikang Leng, Dana McKay, Johanne R Trippas, Damiano Spina",
+        "venue": "SIGIR 2025",
+        "link": "https://dl.acm.org/doi/abs/10.1145/3726302.3730174",
+    },
+    {
+        "title": "Can We Hide Machines in the Crowd? Quantifying Equivalence in LLM-in-the-loop Annotation Tasks",
+        "authors": "Jiaman He, Zikang Leng, Dana McKay, Damiano Spina, Johanne R Trippas",
+        "venue": "SIGIR-AP 2025",
+        "link": "https://dl.acm.org/doi/abs/10.1145/3767695.3769508",
+    }
+]
+
 ---
-<Layout>
-    <h1>Publications</h1>
+
+<Layout title="Publications | Peanut's Research">
+    <!-- Doodle Background
+    <div class="absolute inset-0 z-[-1] pointer-events-none overflow-hidden opacity-70">
+        {doodles.map(doodle => (
+            <img 
+                src={doodle.src} 
+                class={`absolute ${doodle.size} animate-float`} 
+                style={`top: ${doodle.top}; left: ${doodle.left}; transform: rotate(${randint(-20, 20)}deg);`}
+            />
+        ))}
+    </div> -->
+
+    <div class="flex flex-1 flex-col py-16 px-6 max-w-3xl mx-auto min-h-screen">
+        <div class="mb-20 text-center relative">
+            <h1 class="font-schoolbell text-6xl font-bold mb-6 relative inline-block">
+                My Publications
+                <!-- Line under title -->
+                <div class="absolute -bottom-2 left-0 w-full h-4 bg-yellow-200 dark:bg-yellow-200 -z-10 -rotate-1 rounded-sm opacity-100"></div>
+            </h1>
+            
+            <p class="font-schoolbell text-2xl text-gray-700 dark:text-gray-300">
+                a collection of <span class="bg-green-100 dark:bg-green-600/70 px-2 rounded-md"><span id="text-adjective">cool</span> things</span> I wrote.
+            </p>
+        </div>
+
+        <main class="space-y-16">
+            {publications.map((pub, index) => (
+                <PublicationEntry index={index} title={pub.title} authors={pub.authors} venue={pub.venue} link={pub.link} />
+            ))}
+        </main>
+
+        <footer class="mt-32 text-center pb-20">
+            <div class="inline-block border-4 border-solid border-yellow-200 dark:border-yellow-200 p-4 rounded-[40px] transform rotate-1 bg-white/50 dark:bg-gray-400/50 backdrop-blur-sm">
+                <p class="font-schoolbell text-3xl">
+                    That's all for now! <br/>
+                    Back to being an <span class="text-green-400 dark:text-green-400 font-bold">avocado</span> 🥑
+                </p>
+            </div>
+        </footer>
+    </div>
 </Layout>
+
+<style>
+    @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0); }
+        50% { transform: translateY(-10px) rotate(5deg); }
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    /* Hand-drawn underline effect */
+    .group:hover h2 {
+        text-decoration: underline wavy #3b82f6;
+    }
+</style>
+
+<script>
+  const text_adjective = document.getElementById('text-adjective')!;
+  const adjectives = ['cool', 'interesting', 'fun', 'awesome', 'stupid', 'dumb', 'brilliant', 'fantastic']
+
+  function setAdjective() {
+		const random_idx = Math.floor(Math.random() * adjectives.length);
+		text_adjective.textContent = adjectives[random_idx];
+  }
+
+  window.onload = function() {
+	setAdjective();
+  }
+</script>
