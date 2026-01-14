@@ -5,6 +5,8 @@ import Layout from '../layouts/Layout.astro';
 function randint(min: number, max: number): number {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+const float_x = randint(10, 30);
+const float_y = randint(10, 20);
 ---
 
 <Layout title="Home">
@@ -31,8 +33,8 @@ function randint(min: number, max: number): number {
     </div>
 
 	<div class="absolute top-0 left-0 w-screen h-screen z-[-1]">
-		<img src="/images/sun.png" style={`top: ${randint(10,30)}vh; left: ${randint(10,30)}vw;`} class="w-30 absolute animate-float dark:hidden">
-		<img src="/images/star.png" style={`top: ${randint(10,30)}vh; left: ${randint(10,30)}vw;`} class="w-20 absolute animate-float hidden dark:block">
+		<img src="/images/sun.png" style={`top: ${float_y}vh; left: ${float_x}vw;`} class="w-30 absolute animate-float dark:hidden">
+		<img src="/images/star.png" style={`top: ${float_y}vh; left: ${float_x}vw;`} class="w-20 absolute animate-float hidden dark:block">
 	</div>
 	  
 </Layout>
