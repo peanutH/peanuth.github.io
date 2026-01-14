@@ -58,3 +58,15 @@ const { title = "Astro Basics" } = Astro.props;
 		background-image: url("/images/star-background.jpg");
 	}
 </style>
+
+
+<style is:global>
+	@keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0); }
+        50% { transform: translateY(-10px) rotate(5deg); }
+    }
+
+	.animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+</style>
