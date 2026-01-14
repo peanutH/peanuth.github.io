@@ -87,15 +87,6 @@ const publications = [
 </Layout>
 
 <style>
-    @keyframes float {
-        0%, 100% { transform: translateY(0) rotate(0); }
-        50% { transform: translateY(-10px) rotate(5deg); }
-    }
-
-    .animate-float {
-        animation: float 6s ease-in-out infinite;
-    }
-
     /* Hand-drawn underline effect */
     .group:hover h2 {
         text-decoration: underline wavy #3b82f6;
@@ -104,7 +95,7 @@ const publications = [
 
 <script>
   const text_adjective = document.getElementById('text-adjective')!;
-  const adjectives = ['cool', 'interesting', 'fun', 'awesome', 'stupid', 'dumb', 'brilliant', 'fantastic']
+  const adjectives = ['cool', 'interesting', 'fun', 'awesome', 'brilliant', 'fantastic']
 
   function setAdjective() {
 		const random_idx = Math.floor(Math.random() * adjectives.length);
