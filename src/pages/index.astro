@@ -45,17 +45,17 @@ const float_y = randint(10, 20);
   const image = document.getElementById('image-home')! as HTMLImageElement;
   const image_desc = document.getElementById('image-desc')!;
 
-  const images = [
-    [ '/images/peanut_1.jpg', 'This is Peanut' ],
-    [ '/images/pudding_1.jpg', 'This is Pudding' ],
-    [ '/images/me.jpg', 'This is Avocado' ],
+  let images = [
+    [ '/images/peanut_1.jpg', () => 'This is Peanut' ],
+    [ '/images/pudding_1.jpg', () => 'This is Pudding' ],
+    [ '/images/me.jpg', () => `This is ${curr_noun}` ],
   ];
 
   function setImage(idx: number) {
-    const [src, desc] = images[idx];
+    const [src, desc] = images[idx] as [string, () => string];
     image.src = src;
-    image.alt = desc;
-	image_desc.textContent = desc;
+    image.alt = desc();
+	image_desc.textContent = desc();
   }
 
 
@@ -63,7 +63,8 @@ const float_y = randint(10, 20);
   const text_noun = document.getElementById('text_noun')!;
   const adjectives = [ 'a peaceful', 'a happy', 'a sad', 'an angry', 'a hungry', 'a thirsty', 'a sleepy', 'a hungry', 'a patient', 'a sleepy', 'a calm', 'a lazy',  ];
   const nouns = [ 'avocado 🥑', 'banana 🍌', 'apple 🍎', 'orange 🍊', 'pear 🍐', 'pineapple 🍍', 'strawberry 🍓', 'cherry 🍒', 'watermelon 🍉', 'melon 🍈', 'potato 🥔' ];
-  
+  let curr_noun = ""
+
   function setAdjective() {
 		const random_idx = Math.floor(Math.random() * adjectives.length);
 		text_adjective.textContent = adjectives[random_idx];
@@ -71,11 +72,16 @@ const float_y = randint(10, 20);
   function setNoun() {
 		const random_idx = Math.floor(Math.random() * nouns.length);
 		text_noun.textContent = nouns[random_idx];
+		curr_noun = nouns[random_idx];
+		curr_noun = curr_noun.substring(0, curr_noun.length-1).trim(); // remove emoji
+		curr_noun = curr_noun.charAt(0).toUpperCase() + curr_noun.slice(1); // capitalize first letter
   }
 
 
   window.onload = function() {
 	let curr_idx = 0;
+	setAdjective();
+	setNoun();
     setImage(curr_idx);
 
 	image_container.addEventListener('click', () => {
@@ -87,8 +93,5 @@ const float_y = randint(10, 20);
 		}
 		setImage(curr_idx);
   	});
-
-	setAdjective();
-	setNoun();
   }
 </script>
