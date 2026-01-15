@@ -1,6 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+function randint(min: number, max: number): number {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+const float_x = randint(0, 20);
+const float_y = randint(10, 20);
 ---
-<Layout title="My Bio | Peanut's Story">
-    <h1>My Bio</h1>
+
+<Layout title="My Bio | Jiaman He">
+    <div class="flex flex-1 flex-col py-16 px-6 max-w-3xl mx-auto min-h-screen relative">
+        <div class="mb-12 text-center relative">
+            <h1 class="font-schoolbell text-6xl font-bold mb-6 relative inline-block">
+                About Me
+                <div class="absolute -bottom-2 left-0 w-full h-4 bg-yellow-400 dark:bg-yellow-200 -z-10 -rotate-1 rounded-sm opacity-100"></div>
+            </h1>
+        </div>
+
+        <main class="font-schoolbell text-2xl text-gray-800 dark:text-gray-200 leading-relaxed space-y-8">
+            <p>
+                My name is <span class="text-emerald-500 dark:text-emerald-400 font-bold">Jiaman He</span>, and I am a PhD student at RMIT University, Australia. My research focuses on information retrieval, human behavior, and physiological sensing.
+            </p>
+            <p>
+                I develop novel methodologies that use eye-tracking data to understand human behavior and cognitive states during search activities. In addition, my work investigates the statistical differences between large language model (LLM) annotations and human decision-making in annotation tasks.
+            </p>
+            
+            <div class="pt-12 text-center">
+                <p class="text-3xl">
+                    I got a little bit distracted, so here is a Totoro
+                </p>
+                <div class="text-9xl mt-4 animate-float inline-block transition-transform hover:scale-110">
+                    <img src="/images/totoro-blue.png" class="w-20 hidden dark:block">
+                    <img src="/images/totoro-2.png" class="w-20 dark:hidden block">
+                </div>
+            </div>
+        </main>
+    </div>
+
+        <!-- Floating background elements for consistency -->
+        <div class="absolute top-0 left-0 w-full h-full z-[-1] pointer-events-none overflow-hidden">
+            <img src="/images/sun.png" style={`top: ${float_y}vh; left: ${float_x}vw;`} class="w-24 absolute animate-float opacity-30 dark:hidden">
+            <img src="/images/star.png" style={`top: ${float_y}vh; left: ${float_x}vw;`} class="w-16 absolute animate-float opacity-30 hidden dark:block">
+        </div>
 </Layout>
