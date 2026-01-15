@@ -28,13 +28,18 @@ const { index, title, authors, venue, link } = Astro.props;
                         </p>
                     </div>
                     <div>
-                        <span class="font-schoolbell text-nowrap text-lg bg-gray-400 dark:bg-gray-400/70 px-4 py-1 rounded-lg border-2 border-yellow-200 dark:border-yellow-200 -rotate-1">
-                            {venue}
-                        </span>
+                        <div class="w-fit relative">
+                            <span class="font-schoolbell text-nowrap text-lg px-4 py-1 rounded-lg -rotate-1">
+                                {venue}
+                            </span>
+                            <div class="absolute -bottom-6 -left-1 w-full h-full px-3">
+                                <div class="w-full h-1 bg-yellow-400 dark:bg-yellow-200 -z-10 -rotate-1 rounded-sm opacity-100"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="mt-4 flex flex-wrap items-center gap-4">
-                    <a href={link} class="font-schoolbell text-xl text-blue-500 dark:text-blue-300 hover:underline decoration-wavy underline-offset-4">
+                    <a href={link} class="font-schoolbell text-xl text-emerald-600 dark:text-emerald-600 hover:underline decoration-wavy underline-offset-4">
                         → Read Paper
                     </a>
                 </div>

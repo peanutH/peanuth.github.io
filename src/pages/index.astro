@@ -24,8 +24,8 @@ const float_y = randint(10, 20);
 							want to be <span id='text_adjective'>peaceful</span> <span id='text_noun'>avocado 🥑</span>.
 						</span>
 					</div>
-					<div id="image-container" class="w-fit mx-auto mt-5 md:m-0 md:ml-10">
-						<img id="image-home" src="/images/peanut_1.jpeg" class="w-40 h-40 rounded-xl">
+					<div id="image-container" class="w-fit mx-auto mt-5 md:m-0 md:ml-10 animate-float-less">
+						<img id="image-home" src="/images/peanut_1.jpg" class="w-40 h-40 rounded-xl">
 						<p id='image-desc' class="w-full font-schoolbell text-center text-sm mt-2">This is Peanut</p>
 					</div>
 				</div>
@@ -46,7 +46,7 @@ const float_y = randint(10, 20);
   const image_desc = document.getElementById('image-desc')!;
 
   const images = [
-    [ '/images/peanut_1.jpeg', 'This is Peanut' ],
+    [ '/images/peanut_1.jpg', 'This is Peanut' ],
     [ '/images/pudding_1.jpg', 'This is Pudding' ],
     [ '/images/me.jpg', 'This is Avocado' ],
   ];
