@@ -1,6 +1,62 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+function randint(min: number, max: number): number {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+const float_x = randint(70, 90);
+const float_y = randint(10, 30);
 ---
+
 <Layout title="Contacts | Get in touch!">
-    <h1>Contacts</h1>
+    <div class="flex flex-1 flex-col py-16 px-6 max-w-3xl mx-auto min-h-screen relative">
+        <div class="mb-12 text-center relative">
+            <h1 class="font-schoolbell text-6xl font-bold mb-6 relative inline-block">
+                Get in Touch!
+                <div class="absolute -bottom-2 left-0 w-full h-4 bg-emerald-400 dark:bg-emerald-400/70 -z-10 -rotate-1 rounded-sm opacity-100"></div>
+            </h1>
+        </div>
+
+        <main class="font-schoolbell text-3xl text-gray-800 dark:text-gray-200 leading-relaxed space-y-12 text-center">
+            <div class="space-y-4">
+                <p>You can find me here:</p>
+                <div class="flex flex-col items-center space-y-6">
+                    <a class="hover:text-emerald-500 transition-colors flex items-center gap-3 group">
+                        <span class="text-4xl group-hover:scale-120 transition-transform"></span> 
+                        <span class="underline decoration-wavy decoration-yellow-400 group-hover:decoration-emerald-400 transition-all">jiaman.he [at] student.rmit.edu.au</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="pt-12 p-8 rotate-1 hover:rotate-0 transition-all">
+                <p class="text-4xl mb-4">Or...</p>
+                <p>
+                    Use <span class="text-emerald-500 dark:text-emerald-400 font-bold animate-pulse">teleportation</span> to reach out to me <br/>
+                    or send me a <span class="text-yellow-500 dark:text-yellow-300 font-bold italic">postcard</span> !
+                </p>
+            </div>
+            
+            <div class="pt-12">
+                <p class="text-2xl">
+                    I'm usually hanging out with...
+                </p>
+                <div class="mt-8 flex justify-center gap-8 animate-float-less">
+                    <div class="relative group">
+                        <img src="/images/peanut_1.jpg" class="w-24 h-24 rounded-full border-2 border-white shadow-lg rotate-3 group-hover:rotate-0 transition-transform" alt="Peanut">
+                        <span class="absolute -bottom-2 -right-2 bg-yellow-400 dark:text-black text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">Peanut</span>
+                    </div>
+                    <div class="relative group">
+                        <img src="/images/pudding_1.jpg" class="w-24 h-24 rounded-full border-2 border-white shadow-lg -rotate-3 group-hover:rotate-0 transition-transform" alt="Pudding">
+                        <span class="absolute -bottom-2 -right-2 bg-emerald-400 dark:text-black text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">Pudding</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Floating background elements -->
+        <div class="absolute top-0 right-0 w-full h-full z-[-1] pointer-events-none overflow-hidden">
+            <img src="/images/sun.png" style={`top: ${float_y}vh; left: ${float_x}vw;`} class="w-24 absolute animate-float opacity-30 dark:hidden">
+            <img src="/images/star.png" style={`top: ${float_y}vh; left: ${float_x}vw;`} class="w-16 absolute animate-float opacity-30 hidden dark:block">
+        </div>
+    </div>
 </Layout>
