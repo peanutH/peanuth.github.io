@@ -91,23 +91,43 @@ const float_y = randint(10, 20);
 	}
 
 	function shoot_confetti() {
-		const colors = ["#AE25DB", "#DB258F", "#B82828"]
+		const colors_primary = ["#cf2e88", "#ed90bf", "#c32a7d", "#f3c6db"]
+		const colors_secondary = ["#00abd9", "#00abd9", "#ead900"]
+
 		confetti({
-			particleCount: 40,
+			particleCount: 30,
 			angle: 60,
 			spread: 55,
 			origin: { x: 0 },
 			shapes: ['star'],
-			colors: colors,
+			colors: colors_primary,
 		});
 
 		confetti({
-			particleCount: 40,
+			particleCount: 30,
 			angle: 120,
 			spread: 55,
 			origin: { x: 1 },
 			shapes: ['star'],
-			colors: colors,
+			colors: colors_primary,
+		});
+
+		confetti({
+			particleCount: 10,
+			angle: 60,
+			spread: 55,
+			origin: { x: 0 },
+			shapes: ['star'],
+			colors: colors_secondary,
+		});
+
+		confetti({
+			particleCount: 10,
+			angle: 120,
+			spread: 55,
+			origin: { x: 1 },
+			shapes: ['star'],
+			colors: colors_secondary,
 		});
 	}
 
