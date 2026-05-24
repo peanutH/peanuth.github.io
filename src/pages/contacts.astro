@@ -1,11 +1,7 @@
 ---
+import Floating from '../components/Floating.astro';
 import Layout from '../layouts/Layout.astro';
 
-function randint(min: number, max: number): number {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-const float_x = randint(70, 90);
-const float_y = randint(10, 30);
 ---
 
 <Layout title="Contacts | Get in touch!">
@@ -53,10 +49,6 @@ const float_y = randint(10, 30);
             </div>
         </main>
 
-        <!-- Floating background elements -->
-        <div class="absolute top-0 right-0 w-full h-full z-[-1] pointer-events-none overflow-hidden">
-            <img src="/images/sun.png" style={`top: ${float_y}vh; left: ${float_x}vw;`} class="w-24 absolute animate-float opacity-30 dark:hidden">
-            <img src="/images/star.png" style={`top: ${float_y}vh; left: ${float_x}vw;`} class="w-16 absolute animate-float opacity-30 hidden dark:block">
-        </div>
+        <Floating class="opacity-30" />
     </div>
 </Layout>

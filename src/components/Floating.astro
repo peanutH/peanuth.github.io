@@ -1,0 +1,25 @@
+---
+const { class: class_name } = Astro.props
+---
+
+<div class:list={["absolute top-0 left-0 w-screen h-screen z-[-1]", class_name]}>
+    <img src="/images/sun.png" id="img-float1" class="w-30 absolute animate-float dark:hidden select-none">
+    <img src="/images/star.png" id="img-float2" class="w-20 absolute animate-float hidden dark:block select-none">
+</div>
+
+
+<script>
+    function randint(min: number, max: number): number { 
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+	const float_x = randint(10, 30);
+	const float_y = randint(10, 20);
+
+    const float_elem1 = (document.querySelector("#img-float1") as HTMLImageElement)
+    const float_elem2 = (document.querySelector("#img-float2") as HTMLImageElement)
+    float_elem1.style.top = `${float_y}vh`;
+    float_elem1.style.left = `${float_x}vw`;
+    float_elem2.style.top = `${float_y}vh`;
+    float_elem2.style.left = `${float_x}vw`;
+</script>
